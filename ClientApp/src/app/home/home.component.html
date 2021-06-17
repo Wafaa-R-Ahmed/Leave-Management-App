@@ -1,0 +1,33 @@
+<h2>Leaves Dashboard</h2>
+
+<p *ngIf="loading"><em>Loading...</em></p>
+
+<p *ngIf="!leaves && !loading"><em>No previous leaves</em></p>
+
+<h4>Current Leave Balance (days): {{leaveBalance}}</h4>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="leaves">
+    <thead>
+        <tr>
+            <th>From</th>
+            <th>To</th>
+            <th>Duration</th>
+            <th>Reason</th>
+            <th>Status</th>
+            <th>Created At</th>
+            <th>Remaining Balance</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let leave of leaves">
+            <td>{{ leave.FromDate | date:'dd-MM-yyyy'}}</td>
+            <td>{{ leave.ToDate | date:'dd-MM-yyyy'}}</td>
+            <td>{{ leave.Duration }}</td>
+            <td>{{ leave.Reason }}</td>
+            <td>{{ leave.Status }}</td>
+            <td>{{ leave.CreatedAt | date:'dd-MM-yyyy'}}</td>
+            <td>{{ leave.RemainingLeaveBalance }}</td>
+        </tr>
+    </tbody>
+</table>
